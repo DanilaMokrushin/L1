@@ -133,7 +133,7 @@ void VivodTrub(const pipe& pipecreated)
 {
 	ofstream OutFile;
 	OutFile.open("вывод трубы.txt", ios::out);
-	if (pipecreated.diameter != 0) {
+	if (pipecreated.diameter <= 0) {
 		OutFile << "Труба:" << endl;
 		OutFile << "Идентификатор - " << pipecreated.id << endl;
 		OutFile << "Длина(м) - " << pipecreated.length << endl;
@@ -150,7 +150,7 @@ void VivodCS(const CS& CScreated)
 {
 	ofstream OutFile;
 	OutFile.open("вывод КС.txt", ios::out);
-	if (CScreated.id != 0) {
+	if (CScreated.id <= 0) {
 		OutFile << "Компрессорная станция:" << endl;
 		OutFile << "Идентификатор - " << CScreated.id << endl;
 		OutFile << "Название - " << CScreated.name << endl;
@@ -212,8 +212,9 @@ int main()
 				 CScheck = 1;
 				 break;
 			 case 3:
-				 if (Pcheck==1 && CScheck==1) { View(P,CSt); system("pause"); }			
-				 else { cout << "Неполные данные"; }
+				 View(P,CSt);
+				 system("pause"); }			
+				 
 				 break;
 			 case 4:
 				 EditPipe(P);
